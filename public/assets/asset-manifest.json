@@ -1,0 +1,115 @@
+{
+  "images": [
+    { "key": "an_normal", "url": "assets/characters/portraits/an_normal.png" },
+    { "key": "an_shocked", "url": "assets/characters/portraits/an_shocked.png" },
+    { "key": "an_thoughtful", "url": "assets/characters/portraits/an_thoughtful.png" },
+    { "key": "mom_warm", "url": "assets/characters/portraits/mom_warm.png" },
+    { "key": "mom_worried", "url": "assets/characters/portraits/mom_worried.png" },
+    { "key": "mom_happy", "url": "assets/characters/portraits/mom_happy.png" },
+    { "key": "friend_friendly", "url": "assets/characters/portraits/friend_friendly.png" },
+    { "key": "friend_explaining", "url": "assets/characters/portraits/friend_explaining.png" },
+    { "key": "vendor_hardworking", "url": "assets/characters/portraits/vendor_hardworking.png" },
+    { "key": "vendor_startled", "url": "assets/characters/portraits/vendor_startled.png" },
+    { "key": "advisor_welcome", "url": "assets/characters/portraits/advisor_welcome.png" },
+    { "key": "advisor_explain", "url": "assets/characters/portraits/advisor_explain.png" },
+    { "key": "guard_strict", "url": "assets/characters/portraits/guard_strict.png" },
+    { "key": "guard_friendly", "url": "assets/characters/portraits/guard_friendly.png" },
+    { "key": "title_logo", "url": "assets/ui/title_logo.png" },
+    { "key": "dialog_box", "url": "assets/ui/dialog_box.png" },
+    { "key": "choice_button", "url": "assets/ui/choice_button.png" },
+    { "key": "ui_panel", "url": "assets/ui/ui_panel.png" },
+    { "key": "icon_coin", "url": "assets/ui/icon_coin.png" },
+    { "key": "icon_heart", "url": "assets/ui/icon_heart.png" },
+    { "key": "icon_helmet", "url": "assets/ui/icon_helmet.png" },
+    { "key": "icon_insurance_card", "url": "assets/ui/icon_insurance_card.png" },
+    { "key": "btn_start", "url": "assets/ui/btn_start.png" },
+    { "key": "btn_continue", "url": "assets/ui/btn_continue.png" },
+    { "key": "btn_lessons", "url": "assets/ui/btn_lessons.png" },
+    { "key": "tileset_house", "url": "assets/tilesets/vietnam_house.png" },
+    { "key": "tileset_market", "url": "assets/tilesets/vietnam_market.png" },
+    { "key": "tileset_road", "url": "assets/tilesets/road_tiles.png" },
+    { "key": "tileset_school", "url": "assets/tilesets/school_tiles.png" }
+  ],
+  "spritesheets": [
+    {
+      "key": "an",
+      "url": "assets/characters/an.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "mom",
+      "url": "assets/characters/mom.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "friend",
+      "url": "assets/characters/friend.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "vendor",
+      "url": "assets/characters/vendor.png",
+      "frameWidth": 96,
+      "frameHeight": 48
+    },
+    {
+      "key": "insurance_advisor",
+      "url": "assets/characters/insurance_advisor.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "school_guard",
+      "url": "assets/characters/school_guard.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "pedestrians",
+      "url": "assets/characters/pedestrians.png",
+      "frameWidth": 48,
+      "frameHeight": 48
+    },
+    {
+      "key": "traffic_truck",
+      "url": "assets/characters/traffic_truck.png",
+      "frameWidth": 144,
+      "frameHeight": 96
+    },
+    {
+      "key": "traffic_car",
+      "url": "assets/characters/traffic_car.png",
+      "frameWidth": 96,
+      "frameHeight": 64
+    }
+  ],
+  "tilemaps": [
+    { "key": "map_home", "url": "assets/maps/home.tmj" },
+    { "key": "map_alley", "url": "assets/maps/alley.tmj" },
+    { "key": "map_market", "url": "assets/maps/market_street.tmj" },
+    { "key": "map_rainy", "url": "assets/maps/rainy_road.tmj" },
+    { "key": "map_school", "url": "assets/maps/school_gate.tmj" }
+  ],
+  "audio": [
+    { "key": "bgm_menu", "url": "assets/audio/bgm_menu.mp3" },
+    { "key": "bgm_home", "url": "assets/audio/bgm_home.mp3" },
+    { "key": "bgm_street", "url": "assets/audio/bgm_street.mp3" },
+    { "key": "bgm_rain", "url": "assets/audio/bgm_rain.mp3" },
+    { "key": "bgm_school", "url": "assets/audio/bgm_school.mp3" },
+    { "key": "sfx_click", "url": "assets/audio/sfx_click.wav" },
+    { "key": "sfx_coin", "url": "assets/audio/sfx_coin.wav" },
+    { "key": "sfx_crash", "url": "assets/audio/sfx_crash.wav" },
+    { "key": "sfx_alarm", "url": "assets/audio/sfx_alarm.wav" },
+    { "key": "sfx_rain", "url": "assets/audio/sfx_rain.mp3" },
+    { "key": "sfx_thunder", "url": "assets/audio/sfx_thunder.wav" },
+    { "key": "sfx_horn", "url": "assets/audio/sfx_horn.wav" },
+    { "key": "sfx_whistle", "url": "assets/audio/sfx_whistle.wav" },
+    { "key": "sfx_buy_insurance", "url": "assets/audio/sfx_buy_insurance.wav" }
+  ],
+  "json": [
+    { "key": "dialogues", "url": "assets/dialogues.vi.json" }
+  ]
+}

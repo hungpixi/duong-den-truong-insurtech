@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản vẽ Asset & Layout 2.5D - Đường Đến Trường</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --primary: #ff2a5f;
+            --primary-glow: rgba(255, 42, 95, 0.4);
+            --secondary: #00f0ff;
+            --secondary-glow: rgba(0, 240, 255, 0.4);
+            --text-color: #e5e7eb;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        h1 {
+            font-family: 'VT323', monospace;
+            font-size: 3rem;
+            margin: 0;
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary-glow), 0 0 20px var(--secondary-glow);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-btn.active {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .viewer-box {
+            display: flex;
+            gap: 20px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .canvas-container {
+            position: relative;
+            background: #05070c;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+        }
+
+        .control-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .panel-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .asset-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .asset-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-color);
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .asset-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--secondary);
+        }
+
+        .asset-btn.active {
+            background: rgba(0, 240, 255, 0.15);
+            border-color: var(--secondary);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .desc-box {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .coordinates-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .coordinates-table th, .coordinates-table td {
+            padding: 6px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .coordinates-table th {
+            color: var(--text-muted);
+        }
+
+        .coordinates-table td.val {
+            font-family: monospace;
+            color: var(--secondary);
+        }
+
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 20px rgba(255, 42, 95, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Scanlines Overlay */
+        .crt-overlay::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ĐƯỜNG ĐẾN TRƯỜNG - GRAPHIC BLUEPRINT</h1>
+        <div class="subtitle">Bản vẽ thiết kế chi tiết bằng HTML5 Canvas 2D API (Vector shapes & Pixel offsets)</div>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('assets')">Thư viện Asset đơn lẻ</button>
+            <button class="tab-btn" onclick="switchTab('gameplay')">Giao diện Game 2.5D tổng thể</button>
+        </div>
+
+        <div class="viewer-box">
+            <div class="canvas-container crt-overlay" id="canvas-wrapper">
+                <canvas id="app-canvas" width="640" height="480"></canvas>
+            </div>
+
+            <div class="control-panel">
+                <!-- PANEL: THƯ VIỆN ASSET -->
+                <div class="panel-section" id="assets-control">
+                    <h3>Chọn Asset hiển thị</h3>
+                    <div class="asset-list">
+                        <button class="asset-btn active" onclick="selectAsset('motorbike')">🏍️ Xe máy (An lái)</button>
+                        <button class="asset-btn" onclick="selectAsset('pothole')">🕳️ Ổ gà (Pothole)</button>
+                        <button class="asset-btn" onclick="selectAsset('puddle')">💧 Vũng nước mưa</button>
+                        <button class="asset-btn" onclick="selectAsset('vendor')">🥖 Xe hàng rong</button>
+                        <button class="asset-btn" onclick="selectAsset('mom')">👩 Mẹ của An</button>
+                        <button class="asset-btn" onclick="selectAsset('advisor')">🧑‍💼 Tư vấn viên</button>
+                    </div>
+                </div>
+
+                <!-- PANEL: THUYẾT MINH VẼ -->
+                <div class="panel-section">
+                    <h3>Chi tiết kỹ thuật vẽ</h3>
+                    <div class="desc-box" id="asset-desc">
+                        Đang hiển thị xe máy 2.5D. Bản vẽ dựng từ các khối hình học Vector (Bánh xe xoay nghiêng, khung xe màu đỏ retro, giảm xóc, gương chiếu hậu và An đang đội mũ bảo hiểm).
+                    </div>
+                </div>
+
+                <!-- PANEL: TỌA ĐỘ KỸ THUẬT -->
+                <div class="panel-section">
+                    <h3>Bảng thông số vẽ (Canvas Call Spec)</h3>
+                    <table class="coordinates-table">
+                        <thead>
+                            <tr>
+                                <th>Thành phần</th>
+                                <th>Hàm Canvas 2D sử dụng</th>
+                                <th>Màu sắc / Tọa độ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coords-body">
+                            <!-- Sẽ được fill bằng JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="action-row">
+                    <button class="action-btn btn-primary" onclick="animateAsset()">Chạy hiệu ứng (Animate)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('app-canvas');
+        const ctx = canvas.getContext('2d');
+        let currentTab = 'assets';
+        let selectedAsset = 'motorbike';
+        let animFrame = 0;
+        let isAnimating = true;
+
+        // Bảng dữ liệu mô tả và tọa độ kỹ thuật
+        const assetSpecs = {
+            motorbike: {
+                desc: "Xe máy của An được vẽ theo góc nhìn 2.5D Oblique (nghiêng 45 độ về phía trước). Bao gồm: Hai bánh xe elip nghiêng, thân xe màu đỏ retro sơn bóng, yên xe màu đen mờ, ghi đông góc nghiêng và nhân vật An mặc áo khoác xanh học sinh, đội mũ bảo hiểm màu vàng.",
+                coords: [
+                    { part: "Bóng đổ", fn: "ellipse()", val: "rgba(0,0,0,0.3) / x=320,y=330" },
+                    { part: "Bánh trước/sau", fn: "ellipse(), fill()", val: "#222222 / rX=30, rY=12, nghiêng 15°" },
+                    { part: "Thân xe máy", fn: "arcTo(), fill()", val: "#ff2a5f (Đỏ tươi neon)" },
+                    { part: "Yên xe", fn: "quadraticCurveTo()", val: "#1f2937 (Xám đen)" },
+                    { part: "Đèn pha trước", fn: "arc(), fill()", val: "#ffe600 / Chiếu nón sáng elip" },
+                    { part: "Người lái (An)", fn: "arc(), fillRect()", val: "Áo #2563eb, Mũ bảo hiểm #eab308" }
+                ]
+            },
+            pothole: {
+                desc: "Ổ gà (Pothole) biểu diễn một điểm hư hại trên đường nhựa. Vẽ bằng hình elip méo mó màu đen sẫm sâu, viền bao quanh màu xám sáng hơn mô phỏng gờ vỡ và các đường nứt gãy lan rộng (được vẽ bằng line nét đứt).",
+                coords: [
+                    { part: "Vực sâu lòng ổ", fn: "ellipse(), fill()", val: "#0d0f14 (Đen kịt lòng đường)" },
+                    { part: "Mép gờ ổ gà", fn: "stroke()", val: "#4b5563 / lineWidth=2" },
+                    { part: "Vết rạn nứt", fn: "lineTo(), stroke()", val: "#1f2937 / Góc nghiêng 30°-60°" }
+                ]
+            },
+            puddle: {
+                desc: "Vũng nước mưa trơn trượt phản chiếu ánh sáng trời. Vẽ bằng khối elip dẹt màu xanh lam nhạt bán trong suốt, chồng thêm các vòng elip mảnh đồng tâm có độ mờ nhạt dần để mô phỏng gợn sóng nước lan tỏa khi trời mưa.",
+                coords: [
+                    { part: "Mặt nước phẳng", fn: "ellipse(), fill()", val: "rgba(0, 240, 255, 0.15) (Xanh Cyan nhạt)" },
+                    { part: "Gợn sóng loang", fn: "ellipse(), stroke()", val: "rgba(255,255,255,0.4) / rX tăng dần" },
+                    { part: "Phản chiếu sáng", fn: "ellipse(), fill()", val: "rgba(255,255,255,0.2) / Góc lệch tâm" }
+                ]
+            },
+            vendor: {
+                desc: "Gánh hàng rong/Xe bánh mì vỉa hè đặc trưng Việt Nam. Kết cấu gồm: Khung xe gỗ hình hộp, tủ kính chứa bánh mì màu vàng nhạt, mái che bạt màu sọc xanh đỏ, hai bánh xe đẩy căm tròn và tay đẩy bằng sắt.",
+                coords: [
+                    { part: "Khung xe chính", fn: "fillRect()", val: "#854d0e (Gỗ sẫm)" },
+                    { part: "Tủ bánh mì kính", fn: "strokeRect(), fill()", val: "rgba(255,255,255,0.1) / Viền inox" },
+                    { part: "Mái che sọc", fn: "lineTo(), fill()", val: "Đỏ và trắng xen kẽ" },
+                    { part: "Bánh xe căm sắt", fn: "arc(), stroke()", val: "#4b5563 / Căm vẽ tia xiên" }
+                ]
+            },
+            mom: {
+                desc: "Mẹ của An được vẽ dưới dạng sprite nhân vật 2.5D đứng nghiêng. Mẹ mặc trang phục áo bà ba truyền thống màu xanh lam ngọc, quần đen, tóc búi cao. Tư thế đưa tay ra phía trước như đang cầm chiếc mũ bảo hiểm trao cho An.",
+                coords: [
+                    { part: "Khuôn mặt & tóc", fn: "arc(), fill()", val: "#fed7aa (Màu da), #111827 (Búi tóc)" },
+                    { part: "Áo bà ba", fn: "moveTo(), fill()", val: "#0d9488 (Xanh ngọc đẹp)" },
+                    { part: "Quần đen", fn: "fillRect()", val: "#111827 (Đen nhám)" },
+                    { part: "Mũ bảo hiểm cầm tay", fn: "arc(), fill()", val: "#eab308 (Mũ bảo hiểm vàng)" }
+                ]
+            },
+            advisor: {
+                desc: "Nhân viên tư vấn bảo hiểm ảo (AI Advisor). Vẽ với trang phục công sở: Áo sơ mi trắng có caravat xanh dương, vest xám đen sang trọng, đeo kính tri thức. Tay cầm một tấm thẻ bảo hiểm (Insurance Card) phát sáng xanh cyan.",
+                coords: [
+                    { part: "Đầu & Kính", fn: "arc(), stroke()", val: "Kính gọng tròn #00f0ff" },
+                    { part: "Vest & Sơ mi", fn: "lineTo(), fill()", val: "Áo #ffffff, Caravat #2563eb, Vest #374151" },
+                    { part: "Thẻ bảo hiểm", fn: "roundRect(), fill()", val: "#00f0ff phát sáng cyan" }
+                ]
+            }
+        };
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(tab === 'assets') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('assets-control').style.display = 'block';
+                selectAsset(selectedAsset);
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('assets-control').style.display = 'none';
+                document.getElementById('asset-desc').innerText = "Giao diện Game 2.5D mô phỏng toàn bộ màn chơi RoadScene: Con đường phố chéo 2.5D, các làn xe chạy, xe máy của An đang di chuyển tránh vũng nước và ổ gà. HUD kính mờ hiển thị các chỉ số ở phía trên, và hộp thoại Visual Novel hiển thị lựa chọn ở phía dưới.";
+                fillCoordsForGameplay();
+            }
+            draw();
+        }
+
+        function selectAsset(asset) {
+            selectedAsset = asset;
+            document.querySelectorAll('.asset-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('onclick').includes(asset)) {
+                    btn.classList.add('active');
+                }
+            });
+            document.getElementById('asset-desc').innerText = assetSpecs[asset].desc;
+            fillCoordsTable(asset);
+            draw();
+        }
+
+        function fillCoordsTable(asset) {
+            const tbody = document.getElementById('coords-body');
+            tbody.innerHTML = '';
+            assetSpecs[asset].coords.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><b>${c.part}</b></td><td><code>${c.fn}</code></td><td class="val">${c.val}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function fillCoordsForGameplay() {
+            const tbody = document.getElementById('coords-body');
+            tbody.innerHTML = `
+                <tr><td><b>Bối cảnh đường 2.5D</b></td><td><code>lineTo(), stroke()</code></td><td class="val">Trục đường nghiêng 45° từ trên xuống</td></tr>
+                <tr><td><b>Vật cản (Ổ gà, Nước)</b></td><td><code>ellipse(), fill()</code></td><td class="val">Vẽ elip dẹt bám dọc theo làn đường nhựa</td></tr>
+                <tr><td><b>Bảng chỉ số HUD</b></td><td><code>roundRect(), fill()</code></td><td class="val">Màu kính mờ (glassmorphic opacity 0.5)</td></tr>
+                <tr><td><b>Hộp thoại Story</b></td><td><code>roundRect(), typewriter</code></td><td class="val">Hộp thoại màu tối, bóng mờ viền neon hồng</td></tr>
+            `;
+        }
+
+        function animateAsset() {
+            isAnimating = !isAnimating;
+        }
+
+        // --- DRAWING FUNCTIONS ---
+
+        // Vẽ lưới pixel làm nền
+        function drawGrid() {
+            ctx.fillStyle = '#05070c';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            const gridSize = 20;
+            for(let x = 0; x < canvas.width; x += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for(let y = 0; y < canvas.height; y += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+        }
+
+        // Vẽ bóng đổ elip
+        function drawShadow(x, y, rx, ry) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+            ctx.fill();
+        }
+
+        // Vẽ Xe Máy 2.5D
+        function drawMotorbike(x, y, scale = 1, wave = 0) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // 1. Bóng đổ dưới gầm xe
+            drawShadow(0, 30, 45, 12);
+
+            // 2. Bánh sau (Bên trái)
+            ctx.save();
+            ctx.translate(-30, 15 + Math.sin(wave) * 0.5);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 24, 11, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#1c1d22';
+            ctx.fill();
+            ctx.strokeStyle = '#4b5563';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            // Vành mâm
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 15, 6, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#9ca3af';
+            ctx.fill();
+            ctx.restore();
+
+            // 3. Bánh trước (Bên phải)
+            ctx.save();
+            ctx.translate(35, 15 + Math.sin(wave + 0.5) * 0.5);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 24, 11, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#1c1d22';
+            ctx.fill();
+            ctx.strokeStyle = '#4b5563';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            // Vành mâm
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 15, 6, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#9ca3af';
+            ctx.fill();
+            ctx.restore();
+
+            // 4. Thân xe đỏ retro sơn bóng
+            ctx.beginPath();
+            ctx.moveTo(-35, 10);
+            ctx.quadraticCurveTo(-20, -10, 0, -5); // Đuôi xe máy
+            ctx.quadraticCurveTo(20, -2, 30, 10); // Lườn gầm xe
+            ctx.quadraticCurveTo(15, 20, -15, 18);
+            ctx.closePath();
+            ctx.fillStyle = '#ff2a5f';
+            ctx.fill();
+            
+            // Viền sáng bóng loáng trên vỏ xe
+            ctx.beginPath();
+            ctx.moveTo(-30, 8);
+            ctx.quadraticCurveTo(-15, -6, 0, -2);
+            ctx.strokeStyle = '#ff8ca8';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 5. Cản trước che bùn và lốc máy
+            ctx.beginPath();
+            ctx.moveTo(15, 12);
+            ctx.lineTo(32, 2);
+            ctx.lineTo(25, -15);
+            ctx.closePath();
+            ctx.fillStyle = '#e5e7eb';
+            ctx.fill();
+
+            // Hộp máy động cơ
+            ctx.fillStyle = '#4b5563';
+            ctx.fillRect(-10, 5, 20, 12);
+
+            // 6. Yên xe máy màu đen
+            ctx.beginPath();
+            ctx.moveTo(-25, 0);
+            ctx.quadraticCurveTo(-10, -8, 5, -5);
+            ctx.lineTo(5, 5);
+            ctx.lineTo(-25, 6);
+            ctx.closePath();
+            ctx.fillStyle = '#222222';
+            ctx.fill();
+
+            // 7. Ghi-đông & Cổ xe
+            ctx.beginPath();
+            ctx.moveTo(22, -12);
+            ctx.lineTo(26, -30);
+            ctx.strokeStyle = '#9ca3af';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            // Tay lái
+            ctx.beginPath();
+            ctx.moveTo(15, -28);
+            ctx.lineTo(35, -24);
+            ctx.strokeStyle = '#222222';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            // Đèn pha elip
+            ctx.beginPath();
+            ctx.ellipse(26, -32, 7, 5, -Math.PI/6, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.strokeStyle = '#ff2a5f';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Ánh sáng đèn chiếu xiên góc 2.5D
+            let lightGrad = ctx.createLinearGradient(26, -32, 90, 10);
+            lightGrad.addColorStop(0, 'rgba(255, 230, 0, 0.7)');
+            lightGrad.addColorStop(1, 'rgba(255, 230, 0, 0)');
+            ctx.beginPath();
+            ctx.moveTo(26, -32);
+            ctx.lineTo(110, -10);
+            ctx.lineTo(75, 40);
+            ctx.closePath();
+            ctx.fillStyle = lightGrad;
+            ctx.fill();
+
+            // 8. Người điều khiển An đội mũ bảo hiểm
+            // Áo khoác xanh học sinh
+            ctx.fillStyle = '#2563eb';
+            ctx.beginPath();
+            ctx.moveTo(-15, -5);
+            ctx.quadraticCurveTo(-18, -25, -12, -38); // Lưng cúi
+            ctx.lineTo(10, -28); // Ngực hướng lái
+            ctx.lineTo(2, 5);
+            ctx.closePath();
+            ctx.fill();
+            // Cánh tay đặt lên ghi đông
+            ctx.beginPath();
+            ctx.moveTo(-10, -32);
+            ctx.lineTo(18, -26);
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            
+            // Khuôn mặt
+            ctx.beginPath();
+            ctx.arc(-5, -45, 9, 0, Math.PI * 2);
+            ctx.fillStyle = '#fed7aa';
+            ctx.fill();
+            
+            // Mũ bảo hiểm màu vàng che đầu
+            ctx.beginPath();
+            ctx.arc(-6, -48, 10, Math.PI, 0, false);
+            ctx.fillStyle = '#eab308';
+            ctx.fill();
+            // Kính bảo hộ đen trên mũ
+            ctx.beginPath();
+            ctx.arc(-3, -48, 8, -Math.PI / 4, Math.PI / 4);
+            ctx.strokeStyle = '#111827';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Vẽ Ổ gà (Pothole)
+        function drawPothole(x, y, scale = 1) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Mép vỡ ngoài ổ gà
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 38, 15, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#2d3748';
+            ctx.fill();
+            ctx.strokeStyle = '#4a5568';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Lòng ổ gà sâu
+            ctx.beginPath();
+            ctx.ellipse(-2, 1, 28, 9, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fillStyle = '#0a0d14';
+            ctx.fill();
+
+            // Các đường nứt xung quanh
+            ctx.strokeStyle = '#1a202c';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            // Nứt trái
+            ctx.moveTo(-35, -2); ctx.lineTo(-50, -5); ctx.lineTo(-55, -2);
+            // Nứt phải
+            ctx.moveTo(35, 2); ctx.lineTo(48, 6); ctx.lineTo(55, 3);
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Vẽ Vũng Nước Mưa (Puddle)
+        function drawPuddle(x, y, scale = 1, wave = 0) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Nền nước màu lam trong suốt
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 50, 18, -Math.PI / 16, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 240, 255, 0.18)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(0, 240, 255, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Ánh phản chiếu trắng sáng
+            ctx.beginPath();
+            ctx.ellipse(-10, -4, 25, 6, -Math.PI / 16, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.fill();
+
+            // Gợn sóng đồng tâm loang lổ
+            let waveR = (wave * 1.5) % 18;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 20 + waveR * 1.5, 7 + waveR * 0.55, -Math.PI / 16, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${Math.max(0, 1 - waveR / 18) * 0.4})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Vẽ Xe Hàng Rong (Vendor)
+        function drawVendor(x, y, scale = 1) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Bóng đổ xe
+            drawShadow(0, 45, 50, 15);
+
+            // Bánh xe đẩy căm sắt
+            ctx.beginPath();
+            ctx.arc(-25, 30, 18, 0, Math.PI * 2);
+            ctx.arc(25, 32, 18, 0, Math.PI * 2);
+            ctx.strokeStyle = '#4b5563';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            // Căm căm sắt hình nan hoa
+            for(let i=0; i<8; i++){
+                let ang = (i * Math.PI) / 4;
+                ctx.beginPath();
+                ctx.moveTo(-25, 30);
+                ctx.lineTo(-25 + Math.cos(ang)*18, 30 + Math.sin(ang)*18);
+                ctx.moveTo(25, 32);
+                ctx.lineTo(25 + Math.cos(ang)*18, 32 + Math.sin(ang)*18);
+                ctx.strokeStyle = '#9ca3af';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+
+            // Khung xe gỗ
+            ctx.fillStyle = '#854d0e';
+            ctx.fillRect(-35, -20, 70, 45);
+            ctx.strokeStyle = '#451a03';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(-35, -20, 70, 45);
+
+            // Bàn đựng đồ ăn / Tủ kính
+            ctx.fillStyle = 'rgba(200, 230, 255, 0.3)';
+            ctx.fillRect(-30, -42, 60, 22);
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(-30, -42, 60, 22);
+            
+            // Ổ bánh mì bên trong tủ kính
+            ctx.fillStyle = '#d97706';
+            ctx.fillRect(-20, -32, 12, 6);
+            ctx.fillRect(-5, -30, 10, 6);
+            ctx.fillRect(10, -33, 11, 6);
+
+            // Mái che sọc xanh đỏ
+            ctx.beginPath();
+            ctx.moveTo(-42, -55);
+            ctx.lineTo(42, -55);
+            ctx.lineTo(35, -45);
+            ctx.lineTo(-35, -45);
+            ctx.closePath();
+            ctx.fillStyle = '#dc2626';
+            ctx.fill();
+            
+            // Sọc sọc trang trí
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(-25, -55, 10, 10);
+            ctx.fillRect(0, -55, 10, 10);
+            ctx.fillRect(20, -55, 10, 10);
+
+            // Trụ chống sắt của mái che
+            ctx.beginPath();
+            ctx.moveTo(-32, -20); ctx.lineTo(-32, -45);
+            ctx.moveTo(32, -20); ctx.lineTo(32, -45);
+            ctx.strokeStyle = '#9ca3af';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Vẽ Nhân vật Mẹ
+        function drawMom(x, y, scale = 1) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Bóng đổ đứng
+            drawShadow(0, 50, 15, 6);
+
+            // Quần đen dài
+            ctx.fillStyle = '#111827';
+            ctx.fillRect(-7, 20, 6, 30);
+            ctx.fillRect(2, 20, 6, 30);
+
+            // Dép quai kẹp
+            ctx.fillStyle = '#e5e7eb';
+            ctx.fillRect(-9, 48, 9, 3);
+            ctx.fillRect(1, 48, 9, 3);
+
+            // Thân áo bà ba xanh lam ngọc quyến rũ
+            ctx.fillStyle = '#0d9488';
+            ctx.beginPath();
+            ctx.moveTo(-12, -15);
+            ctx.quadraticCurveTo(-15, 10, -10, 22);
+            ctx.lineTo(10, 22);
+            ctx.quadraticCurveTo(15, 10, 12, -15);
+            ctx.closePath();
+            ctx.fill();
+
+            // Tà áo xẻ bên hông bà ba
+            ctx.strokeStyle = '#042f2e';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, -15);
+            ctx.lineTo(0, 22);
+            ctx.stroke();
+
+            // Cánh tay cầm nón bảo hiểm đưa ra
+            ctx.beginPath();
+            ctx.moveTo(-10, -10);
+            ctx.lineTo(-24, 0);
+            ctx.lineTo(-20, 8);
+            ctx.strokeStyle = '#0d9488';
+            ctx.lineWidth = 5.5;
+            ctx.stroke();
+            
+            // Bàn tay mẹ cầm nón
+            ctx.beginPath();
+            ctx.arc(-22, 10, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#fed7aa';
+            ctx.fill();
+
+            // Mũ bảo hiểm vàng trao cho An
+            ctx.beginPath();
+            ctx.arc(-26, 17, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#eab308';
+            ctx.fill();
+            ctx.strokeStyle = '#ca8a04';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Đầu & Tóc búi sau gáy
+            ctx.beginPath();
+            ctx.arc(0, -25, 9, 0, Math.PI * 2);
+            ctx.fillStyle = '#fed7aa';
+            ctx.fill();
+            
+            // Tóc đen búi
+            ctx.beginPath();
+            ctx.arc(0, -28, 9, Math.PI, Math.PI * 0.1, false);
+            ctx.fillStyle = '#1e293b';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(8, -26, 4, 0, Math.PI * 2); // Búi tóc tròn
+            ctx.fillStyle = '#1e293b';
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        // Vẽ Nhân viên Bảo hiểm (Advisor)
+        function drawAdvisor(x, y, scale = 1) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(scale, scale);
+
+            // Bóng đổ đứng
+            drawShadow(0, 50, 14, 5);
+
+            // Quần công sở xám đen
+            ctx.fillStyle = '#374151';
+            ctx.fillRect(-7, 20, 6, 30);
+            ctx.fillRect(2, 20, 6, 30);
+
+            // Giày da đen bóng
+            ctx.fillStyle = '#111827';
+            ctx.fillRect(-9, 48, 9, 4);
+            ctx.fillRect(1, 48, 4, 4);
+
+            // Áo sơ mi trắng & caravat xanh dương & áo vest khoác ngoài
+            ctx.fillStyle = '#ffffff'; // Sơ mi
+            ctx.beginPath();
+            ctx.moveTo(-10, -15);
+            ctx.lineTo(10, -15);
+            ctx.lineTo(5, 20);
+            ctx.lineTo(-5, 20);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = '#2563eb'; // Caravat xanh dương
+            ctx.beginPath();
+            ctx.moveTo(-2, -8);
+            ctx.lineTo(2, -8);
+            ctx.lineTo(4, 5);
+            ctx.lineTo(0, 12);
+            ctx.lineTo(-4, 5);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = '#4b5563'; // Vest ngoài màu xám lịch lãm
+            ctx.beginPath();
+            ctx.moveTo(-14, -15);
+            ctx.lineTo(-6, -15);
+            ctx.lineTo(-2, 20);
+            ctx.lineTo(-11, 20);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(14, -15);
+            ctx.lineTo(6, -15);
+            ctx.lineTo(2, 20);
+            ctx.lineTo(11, 20);
+            ctx.closePath();
+            ctx.fill();
+
+            // Cánh tay giơ Thẻ bảo hiểm phát sáng màu xanh cyan
+            ctx.beginPath();
+            ctx.moveTo(10, -10);
+            ctx.lineTo(24, 0);
+            ctx.strokeStyle = '#4b5563';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+
+            // Thẻ bảo hiểm Insurance Card neon
+            ctx.fillStyle = '#00f0ff';
+            ctx.beginPath();
+            ctx.roundRect(22, -10, 20, 14, 2);
+            ctx.fill();
+            ctx.shadowColor = '#00f0ff';
+            ctx.shadowBlur = 12;
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            // Tắt hiệu ứng shadow để vẽ các phần khác
+            ctx.shadowBlur = 0;
+
+            // Đầu nhân vật và kính cận trí thức
+            ctx.beginPath();
+            ctx.arc(0, -25, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#fed7aa';
+            ctx.fill();
+            
+            // Tóc nâu chải chuốt rẽ ngôi
+            ctx.beginPath();
+            ctx.arc(-1, -27, 8, Math.PI, Math.PI * 0.15);
+            ctx.fillStyle = '#78350f';
+            ctx.fill();
+
+            // Kính tròn cyan
+            ctx.beginPath();
+            ctx.arc(-3, -25, 3, 0, Math.PI * 2);
+            ctx.arc(3, -25, 3, 0, Math.PI * 2);
+            ctx.strokeStyle = '#00f0ff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Vẽ toàn bộ Gameplay Mockup 2.5D
+        function drawGameplayMockup() {
+            // 1. Phông nền bầu trời mưa âm u chuyển sắc
+            let skyGrad = ctx.createLinearGradient(0, 0, 0, 150);
+            skyGrad.addColorStop(0, '#10141f');
+            skyGrad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, canvas.width, 150);
+
+            // Mây đen ở trên
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
+            ctx.beginPath();
+            ctx.arc(100, 40, 50, 0, Math.PI*2);
+            ctx.arc(160, 50, 60, 0, Math.PI*2);
+            ctx.arc(480, 30, 45, 0, Math.PI*2);
+            ctx.arc(540, 40, 50, 0, Math.PI*2);
+            ctx.fill();
+
+            // 2. Con đường xiên 2.5D đặc trưng phố thị Việt Nam
+            // Nền đường nhựa màu xám đậm
+            ctx.fillStyle = '#1e293b';
+            ctx.beginPath();
+            ctx.moveTo(0, 360);
+            ctx.lineTo(640, 240); // Đường chân trời nghiêng
+            ctx.lineTo(640, 150);
+            ctx.lineTo(0, 150);
+            ctx.fill();
+            
+            // Mặt đường nhựa chính dưới chân ga
+            ctx.fillStyle = '#334155';
+            ctx.beginPath();
+            ctx.moveTo(0, 360);
+            ctx.lineTo(640, 240);
+            ctx.lineTo(640, 380);
+            ctx.lineTo(0, 380);
+            ctx.fill();
+
+            // Vạch kẻ đường đứt quãng màu vàng nghiêng 2.5D
+            ctx.strokeStyle = '#eab308';
+            ctx.lineWidth = 4;
+            ctx.setLineDash([25, 20]);
+            ctx.beginPath();
+            ctx.moveTo(0, 300);
+            ctx.lineTo(640, 210);
+            ctx.stroke();
+            ctx.setLineDash([]); // Reset line dash
+
+            // Vỉa hè lót gạch đỏ gạch nung
+            ctx.fillStyle = '#7c2d12';
+            ctx.beginPath();
+            ctx.moveTo(0, 360);
+            ctx.lineTo(640, 240);
+            ctx.lineTo(640, 260);
+            ctx.lineTo(0, 380);
+            ctx.closePath();
+            ctx.fill();
+
+            // 3. Các thực thể trên đường (Obstacles & Puddles)
+            drawPothole(450, 270, 0.7); // Ổ gà ở xa bên phải
+            drawPuddle(180, 320, 0.9, animFrame); // Vũng nước mưa nhạt nhòa ở gần bên trái
+            drawVendor(540, 210, 0.6); // Xe hàng rong đỗ trên vỉa hè xa xa
+
+            // 4. Nhân vật An lái xe máy 2.5D chạy trên đường
+            // Lái xe máy nhấp nhô động cơ
+            let motorbikeY = 280 + Math.sin(animFrame * 0.2) * 2;
+            drawMotorbike(320, motorbikeY, 0.85, animFrame * 0.15);
+
+            // Cơn mưa rào đan chéo
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+            ctx.lineWidth = 1.5;
+            for(let i=0; i<30; i++) {
+                let rainX = (i * 25 + animFrame * 8) % 640;
+                let rainY = (i * 15 + animFrame * 15) % 350;
+                ctx.beginPath();
+                ctx.moveTo(rainX, rainY);
+                ctx.lineTo(rainX - 10, rainY + 25);
+                ctx.stroke();
+            }
+
+            // 5. Giao diện HUD Kính mờ (Glassmorphic HUD) phía trên
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.65)';
+            ctx.beginPath();
+            ctx.roundRect(15, 15, 610, 50, 10);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Vẽ văn bản HUD
+            ctx.font = 'bold 13px Outfit';
+            ctx.fillStyle = '#fff';
+            // Máu
+            ctx.fillStyle = '#ff2a5f';
+            ctx.fillText('❤️ MÁU: 100/100', 30, 45);
+            // Coin
+            ctx.fillStyle = '#eab308';
+            ctx.fillText('🪙 COIN: 450', 170, 45);
+            // Safety
+            ctx.fillStyle = '#10b981';
+            ctx.fillText('🛡️ AN TOÀN: 85%', 300, 45);
+            // Insurance Status Card
+            ctx.fillStyle = '#00f0ff';
+            ctx.fillText('📋 GÓI BẢO HIỂM: DI CHUYỂN CAO CẤP', 440, 45);
+
+            // 6. Hộp thoại cốt truyện cốt lõi (Dialogue Box) phía dưới
+            ctx.fillStyle = 'rgba(9, 13, 23, 0.9)';
+            ctx.beginPath();
+            ctx.roundRect(15, 360, 610, 105, 12);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255, 42, 95, 0.5)'; // Viền neon đỏ rực
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Tên người nói
+            ctx.fillStyle = '#ff2a5f';
+            ctx.font = 'bold 14px Outfit';
+            ctx.fillText('An (Nhân vật chính)', 30, 385);
+
+            // Lời hội thoại
+            ctx.fillStyle = '#e5e7eb';
+            ctx.font = '400 13px Outfit';
+            ctx.fillText('Trời bắt đầu đổ mưa lớn và đường trơn trượt quá! Phía trước lại có nhiều ổ gà vũng nước.', 30, 407);
+            ctx.fillText('Mình nên giảm tốc độ để đảm bảo an toàn hay phóng nhanh cho kịp giờ học?', 30, 424);
+
+            // Hai nút lựa chọn đè dưới hộp thoại
+            // Nút 1: Đi chậm (An toàn)
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
+            ctx.beginPath();
+            ctx.roundRect(360, 432, 120, 25, 4);
+            ctx.fill();
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 11px Outfit';
+            ctx.fillText('1. Đi chậm (An toàn)', 375, 448);
+
+            // Nút 2: Đi nhanh (Rủi ro)
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.15)';
+            ctx.beginPath();
+            ctx.roundRect(495, 432, 120, 25, 4);
+            ctx.fill();
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 11px Outfit';
+            ctx.fillText('2. Phóng nhanh', 525, 448);
+        }
+
+        // --- HÀM VẼ CHÍNH ---
+        function draw() {
+            drawGrid();
+
+            if(currentTab === 'assets') {
+                // Vẽ asset được chọn chính giữa màn hình
+                const scale = 2.5;
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+
+                if (selectedAsset === 'motorbike') {
+                    drawMotorbike(centerX, centerY - 20, 1.8, animFrame * 0.1);
+                } else if (selectedAsset === 'pothole') {
+                    drawPothole(centerX, centerY, 2.0);
+                } else if (selectedAsset === 'puddle') {
+                    drawPuddle(centerX, centerY, 2.0, animFrame);
+                } else if (selectedAsset === 'vendor') {
+                    drawVendor(centerX, centerY, 1.6);
+                } else if (selectedAsset === 'mom') {
+                    drawMom(centerX, centerY - 50, 1.8);
+                } else if (selectedAsset === 'advisor') {
+                    drawAdvisor(centerX, centerY - 50, 1.8);
+                }
+            } else {
+                drawGameplayMockup();
+            }
+        }
+
+        // Loop animation để mượt mà bánh xe quay, nước loang, mưa rơi
+        function loop() {
+            if(isAnimating) {
+                animFrame++;
+                draw();
+            }
+            requestAnimationFrame(loop);
+        }
+
+        // Khởi động
+        selectAsset('motorbike');
+        loop();
+    </script>
+</body>
+</html>

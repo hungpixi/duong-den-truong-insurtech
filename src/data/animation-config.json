@@ -1,0 +1,306 @@
+{
+  "dialog": {
+    "entrance": {
+      "duration": 350,
+      "ease": "Back.easeOut",
+      "easeParams": [1.2],
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "alpha": 1.0,
+      "initial": {
+        "scaleX": 0.2,
+        "scaleY": 0.2,
+        "alpha": 0.0
+      }
+    },
+    "typewriter": {
+      "speeds": {
+        "normal": 30,
+        "slow": 80,
+        "fast": 8
+      },
+      "sfx_trigger_interval": 1
+    },
+    "choice_button": {
+      "hover": {
+        "duration": 100,
+        "ease": "Quad.easeOut",
+        "offsetX": 8,
+        "backgroundColor": "#66fcf1",
+        "textColor": "#0b0c10"
+      },
+      "risky_shake": {
+        "duration": 50,
+        "ease": "Linear",
+        "amplitudeX": 3,
+        "yoyo": true,
+        "repeat": -1
+      },
+      "warning_pulse": {
+        "duration": 250,
+        "ease": "Sine.easeInOut",
+        "alphaMin": 0.2,
+        "alphaMax": 1.0,
+        "yoyo": true,
+        "repeat": -1
+      }
+    },
+    "popup_lesson": {
+      "delay_timer": 3000,
+      "entrance": {
+        "duration": 400,
+        "ease": "Back.easeOut",
+        "easeParams": [1.1]
+      }
+    }
+  },
+  "motorbike": {
+    "idle": {
+      "duration": 650,
+      "ease": "Sine.easeInOut",
+      "yoyo": true,
+      "repeat": -1,
+      "amplitudeY": 1.5
+    },
+    "exhaust_particles": {
+      "frequency": 200,
+      "lifespan": 500,
+      "speedX": { "min": -60, "max": -40 },
+      "speedY": { "min": -25, "max": -15 },
+      "scale": { "start": 0.2, "end": 0.6 },
+      "alpha": { "start": 0.5, "end": 0 },
+      "blendMode": "NORMAL"
+    },
+    "cruise": {
+      "lean_angle": 2,
+      "lean_duration": 300,
+      "lean_ease": "Quad.easeOut",
+      "engine_vibration": {
+        "interval": 80,
+        "amplitudeY": 0.8
+      }
+    },
+    "brake": {
+      "lean_angle": -4,
+      "lean_duration": 200,
+      "lean_ease": "Quad.easeOut",
+      "skid_mark": {
+        "thickness": 3,
+        "color": "0x000000",
+        "initialAlpha": 0.6,
+        "fadeDuration": 2000
+      },
+      "dust_particles": {
+        "count": 15,
+        "angle": { "min": 160, "max": 200 },
+        "speed": { "min": 120, "max": 180 },
+        "gravityY": 0,
+        "drag": 0.95
+      }
+    }
+  },
+  "rain": {
+    "light": {
+      "maxParticles": 40,
+      "angle": -105,
+      "length": 12,
+      "thickness": 1,
+      "color": "0xa3e2f7",
+      "alpha": 0.4,
+      "speedY": { "min": 450, "max": 600 },
+      "speedX": { "min": -160, "max": -120 }
+    },
+    "heavy": {
+      "maxParticles": 150,
+      "angle": -115,
+      "length": 20,
+      "thickness": 1.5,
+      "color": "0x86d6f2",
+      "alpha": 0.6,
+      "speedY": { "min": 850, "max": 1100 },
+      "speedX": { "min": -450, "max": -350 }
+    },
+    "splash": {
+      "frequency": 100,
+      "gravityY": 600,
+      "color": "0xa9e2f5",
+      "alpha": 0.7,
+      "lifespan": 400,
+      "scale": { "start": 4, "end": 1 },
+      "groups": {
+        "forward": {
+          "count": 5,
+          "angle": { "min": -55, "max": -35 },
+          "speed": { "min": 140, "max": 220 }
+        },
+        "backward": {
+          "count": 5,
+          "angle": { "min": 215, "max": 235 },
+          "speed": { "min": 140, "max": 220 }
+        }
+      }
+    }
+  },
+  "screen_shake": {
+    "crash": {
+      "duration": 380,
+      "intensity": 0.025,
+      "ease": "Quad.easeOut"
+    },
+    "near_miss": {
+      "duration": 180,
+      "intensity": 0.008,
+      "ease": "Quad.easeOut"
+    }
+  },
+  "coin": {
+    "floating_text": {
+      "gain": {
+        "color": "#2ecc71",
+        "duration": 1000,
+        "deltaY": -60,
+        "scaleStart": 0.8,
+        "scaleEnd": 1.4,
+        "ease": "Back.easeOut"
+      },
+      "loss": {
+        "color": "#e74c3c",
+        "duration": 1200,
+        "deltaY": -40,
+        "deltaX": 20,
+        "scaleStart": 1.0,
+        "scaleEnd": 1.2,
+        "ease": "Quad.easeOut"
+      }
+    },
+    "loss_particles": {
+      "count": 8,
+      "speedX": { "min": -80, "max": 80 },
+      "speedY": { "min": -250, "max": -150 },
+      "gravityY": 750,
+      "angularVelocity": { "min": 180, "max": 720 },
+      "lifespan": 1200
+    },
+    "reward_drift": {
+      "duration": 750,
+      "ease": "Cubic.easeIn",
+      "hud_pulse": {
+        "duration": 120,
+        "scale": 1.35,
+        "ease": "Back.easeOut"
+      }
+    }
+  },
+  "school_checkin": {
+    "final_stop": {
+      "duration": 1200,
+      "ease": "Cubic.easeOut"
+    },
+    "gate": {
+      "duration": 800,
+      "ease": "Back.easeOut",
+      "easeParams": [1.1],
+      "offsetDeltaX": 50
+    },
+    "confetti": {
+      "count": 40,
+      "gravityY": 300,
+      "speed": { "min": 450, "max": 600 },
+      "colors": ["0x66fcf1", "0xf5a623", "0xff79c6", "0x2ecc71"],
+      "left_emitter": {
+        "angle": { "min": 30, "max": 60 },
+        "x": 0,
+        "y": 600
+      },
+      "right_emitter": {
+        "angle": { "min": 120, "max": 150 },
+        "x": 800,
+        "y": 600
+      }
+    },
+    "victory_banner": {
+      "duration": 600,
+      "ease": "Bounce.easeOut",
+      "startY": -100,
+      "targetY": 220
+    }
+  },
+  "sound_synthesis": {
+    "click": {
+      "type": "sine",
+      "startFrequency": 850,
+      "endFrequency": 750,
+      "duration": 0.012,
+      "volume": 0.15,
+      "envelope": {
+        "attack": 0.001,
+        "decay": 0.005,
+        "sustain": 0.0,
+        "release": 0.006
+      }
+    },
+    "crash": {
+      "type": "sawtooth",
+      "startFrequency": 180,
+      "endFrequency": 40,
+      "duration": 0.35,
+      "volume": 0.8,
+      "envelope": {
+        "attack": 0.01,
+        "decay": 0.1,
+        "sustain": 0.2,
+        "release": 0.24
+      },
+      "noise_mix": 0.4
+    },
+    "coin_receive": {
+      "type": "sine",
+      "startFrequency": 987.77,
+      "endFrequency": 1318.51,
+      "duration": 0.18,
+      "volume": 0.5,
+      "envelope": {
+        "attack": 0.005,
+        "decay": 0.05,
+        "sustain": 0.3,
+        "release": 0.125
+      }
+    },
+    "coin_lose": {
+      "type": "triangle",
+      "startFrequency": 523.25,
+      "endFrequency": 261.63,
+      "duration": 0.25,
+      "volume": 0.6,
+      "envelope": {
+        "attack": 0.01,
+        "decay": 0.08,
+        "sustain": 0.1,
+        "release": 0.16
+      }
+    },
+    "claim_approved": {
+      "type": "sine",
+      "melody": [
+        { "freq": 523.25, "duration": 0.08, "time": 0.0 },
+        { "freq": 659.25, "duration": 0.08, "time": 0.08 },
+        { "freq": 783.99, "duration": 0.08, "time": 0.16 },
+        { "freq": 1046.50, "duration": 0.20, "time": 0.24 }
+      ],
+      "volume": 0.5
+    },
+    "victory": {
+      "type": "triangle",
+      "melody": [
+        { "freq": 261.63, "duration": 0.15, "time": 0.0 },
+        { "freq": 329.63, "duration": 0.15, "time": 0.15 },
+        { "freq": 392.00, "duration": 0.15, "time": 0.30 },
+        { "freq": 523.25, "duration": 0.15, "time": 0.45 },
+        { "freq": 659.25, "duration": 0.15, "time": 0.60 },
+        { "freq": 783.99, "duration": 0.15, "time": 0.75 },
+        { "freq": 1046.50, "duration": 0.40, "time": 0.90 }
+      ],
+      "volume": 0.6
+    }
+  }
+}

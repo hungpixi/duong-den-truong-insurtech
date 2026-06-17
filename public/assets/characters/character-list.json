@@ -1,0 +1,197 @@
+{
+  "characters": [
+    {
+      "id": "an",
+      "name": "An",
+      "role": "Nhân vật chính (Học sinh trung học)",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#2B52B7",
+        "primaryHsl": "hsl(223, 62%, 44%)",
+        "accentHex": "#E15B64",
+        "accentHsl": "hsl(356, 71%, 62%)"
+      },
+      "portraits": [
+        { "id": "an_neutral", "description": "Biểu cảm bình thường, tự tin nhẹ" },
+        { "id": "an_worried", "description": "Biểu cảm lo lắng, có giọt mồ hôi bên thái dương" }
+      ],
+      "animations": {
+        "idle": { "startFrame": 0, "endFrame": 1, "frameRate": 4, "loop": true },
+        "drive": { "startFrame": 2, "endFrame": 5, "frameRate": 12, "loop": true },
+        "drive_rain": { "startFrame": 6, "endFrame": 9, "frameRate": 10, "loop": true },
+        "crash": { "startFrame": 10, "endFrame": 13, "frameRate": 8, "loop": false }
+      }
+    },
+    {
+      "id": "mom",
+      "name": "Mẹ của An",
+      "role": "Mẹ của An (Chu đáo, tảo tần)",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#3B9C90",
+        "primaryHsl": "hsl(172, 45%, 42%)",
+        "accentHex": "#8E7CC3",
+        "accentHsl": "hsl(255, 37%, 63%)"
+      },
+      "portraits": [
+        { "id": "mom_caring", "description": "Cười hiền hậu, dặn dò hiền từ" },
+        { "id": "mom_worried", "description": "Lo lắng, nhíu mày lo âu khuyên bảo" },
+        { "id": "mom_angry", "description": "Nghiêm khắc, giận dữ khi An vi phạm hoặc cãi lời" }
+      ],
+      "animations": {
+        "idle": { "startFrame": 0, "endFrame": 1, "frameRate": 2, "loop": true },
+        "wave": { "startFrame": 2, "endFrame": 5, "frameRate": 6, "loop": true },
+        "give_item": { "startFrame": 6, "endFrame": 9, "frameRate": 6, "loop": false }
+      }
+    },
+    {
+      "id": "bac_nam",
+      "name": "Bác Nam",
+      "role": "Người hàng xóm láng giềng",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#4A8F68",
+        "primaryHsl": "hsl(146, 32%, 43%)",
+        "accentHex": "#E3A87C",
+        "accentHsl": "hsl(25, 65%, 69%)"
+      },
+      "portraits": [
+        { "id": "bac_nam_friendly", "description": "Nụ cười sảng khoái, mắt híp thân thiện" }
+      ],
+      "animations": {
+        "idle": { "startFrame": 0, "endFrame": 1, "frameRate": 2, "loop": true },
+        "garden": { "startFrame": 2, "endFrame": 5, "frameRate": 4, "loop": true }
+      }
+    },
+    {
+      "id": "friend",
+      "name": "Bạn học",
+      "role": "Người đồng hành / Tư vấn tài chính",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#2ECC71",
+        "primaryHsl": "hsl(145, 58%, 49%)",
+        "accentHex": "#2C3E50",
+        "accentHsl": "hsl(210, 29%, 24%)"
+      },
+      "portraits": [
+        { "id": "friend_friendly", "description": "Thân thiện chào đón ở trường" },
+        { "id": "friend_explaining", "description": "Nghiêm túc giải thích về bảo hiểm và rủi ro" }
+      ],
+      "animations": {
+        "idle": { "startFrame": 0, "endFrame": 1, "frameRate": 3, "loop": true },
+        "walk": { "startFrame": 2, "endFrame": 5, "frameRate": 8, "loop": true }
+      }
+    },
+    {
+      "id": "vendor",
+      "name": "Cô bán hàng rong",
+      "role": "Người đi đường / Chướng ngại vật ngẫu nhiên",
+      "dimensions": {
+        "sprite": { "width": 96, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#8D6E63",
+        "primaryHsl": "hsl(14, 16%, 47%)",
+        "accentHex": "#FFCC00",
+        "accentHsl": "hsl(48, 100%, 50%)"
+      },
+      "portraits": [
+        { "id": "vendor_hardworking", "description": "Tần tảo, cười mộc mạc" },
+        { "id": "vendor_startled", "description": "Giật mình hốt hoảng khi có va chạm xảy ra" }
+      ],
+      "animations": {
+        "push": { "startFrame": 0, "endFrame": 3, "frameRate": 6, "loop": true },
+        "crash": { "startFrame": 4, "endFrame": 7, "frameRate": 8, "loop": false }
+      }
+    },
+    {
+      "id": "insurance_advisor",
+      "name": "AI Advisor",
+      "role": "Hỗ trợ bảo hiểm khẩn cấp kỹ thuật số",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#00F2FE",
+        "primaryHsl": "hsl(183, 100%, 50%)",
+        "accentHex": "#1E3D59",
+        "accentHsl": "hsl(209, 50%, 23%)"
+      },
+      "portraits": [
+        { "id": "advisor_welcome", "description": "Chào đón chuyên nghiệp, an tâm" },
+        { "id": "advisor_explain", "description": "Tư vấn hồ sơ claim trực tuyến tiện lợi" }
+      ],
+      "animations": {
+        "bubble_glow": { "startFrame": 0, "endFrame": 3, "frameRate": 6, "loop": true }
+      }
+    },
+    {
+      "id": "school_guard",
+      "name": "Bác bảo vệ trường",
+      "role": "Người gác cổng trường học",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 },
+        "portrait": { "width": 96, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#2C3E50",
+        "primaryHsl": "hsl(210, 29%, 24%)",
+        "accentHex": "#E74C3C",
+        "accentHsl": "hsl(6, 78%, 57%)"
+      },
+      "portraits": [
+        { "id": "guard_strict", "description": "Nghiêm nghị, chỉ gậy cấm xe đi muộn" },
+        { "id": "guard_friendly", "description": "Gật đầu chào học sinh đi đúng giờ" }
+      ],
+      "animations": {
+        "idle": { "startFrame": 0, "endFrame": 1, "frameRate": 2, "loop": true },
+        "signal": { "startFrame": 2, "endFrame": 5, "frameRate": 8, "loop": true }
+      }
+    },
+    {
+      "id": "pedestrians",
+      "name": "Người đi bộ qua đường",
+      "role": "Chướng ngại vật di động",
+      "dimensions": {
+        "sprite": { "width": 48, "height": 48 }
+      },
+      "colors": {
+        "primaryHex": "#7F8C8D",
+        "primaryHsl": "hsl(180, 3%, 52%)"
+      },
+      "animations": {
+        "walk": { "startFrame": 0, "endFrame": 3, "frameRate": 6, "loop": true }
+      }
+    },
+    {
+      "id": "traffic_truck",
+      "name": "Xe tải lấn làn",
+      "role": "Mối nguy lớn trên đường",
+      "dimensions": {
+        "sprite": { "width": 144, "height": 96 }
+      },
+      "colors": {
+        "primaryHex": "#27AE60",
+        "primaryHsl": "hsl(145, 63%, 42%)"
+      },
+      "animations": {
+        "drive": { "startFrame": 0, "endFrame": 3, "frameRate": 10, "loop": true }
+      }
+    }
+  ]
+}

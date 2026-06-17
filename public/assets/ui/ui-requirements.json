@@ -1,0 +1,227 @@
+{
+  "canvas": {
+    "width": 800,
+    "height": 600
+  },
+  "theme": {
+    "colors": {
+      "background": "#0b0c10",
+      "panelBg": "#1f2833",
+      "panelBgAlpha": 0.85,
+      "primary": "#66fcf1",
+      "accent": "#f5a623",
+      "success": "#2ecc71",
+      "danger": "#e74c3c",
+      "text": "#ffffff",
+      "muted": "#a9a9a9",
+      "darkMuted": "#555555"
+    },
+    "fonts": {
+      "family": "'Courier New', Courier, monospace",
+      "sizes": {
+        "title": "48px",
+        "header": "28px",
+        "body": "16px",
+        "caption": "12px",
+        "hud": "18px"
+      }
+    }
+  },
+  "screens": {
+    "main_menu": {
+      "title": {
+        "text": "ĐƯỜNG ĐẾN TRƯỜNG",
+        "x": 400,
+        "y": 130,
+        "fontSize": "48px",
+        "color": "#66fcf1"
+      },
+      "subtitle": {
+        "text": "Hành Trình An Toàn & Bảo Vệ Tài Chính",
+        "x": 400,
+        "y": 185,
+        "fontSize": "18px",
+        "color": "#a9a9a9"
+      },
+      "buttons": {
+        "x": 400,
+        "width": 280,
+        "height": 50,
+        "spacingY": 70,
+        "startY": 300,
+        "items": [
+          { "id": "start", "label": "BẮT ĐẦU CHƠI" },
+          { "id": "continue", "label": "TIẾP TỤC HÀNH TRÌNH" },
+          { "id": "lessons", "label": "BÀI HỌC BẢO HIỂM" }
+        ]
+      }
+    },
+    "hud": {
+      "healthBar": {
+        "iconX": 30,
+        "iconY": 30,
+        "barX": 55,
+        "barY": 22,
+        "width": 150,
+        "height": 16,
+        "color": "#e74c3c"
+      },
+      "coinCounter": {
+        "iconX": 30,
+        "iconY": 50,
+        "textX": 55,
+        "textY": 45,
+        "fontSize": "18px",
+        "color": "#f5a623"
+      },
+      "safetyScore": {
+        "x": 580,
+        "y": 20,
+        "width": 200,
+        "height": 32,
+        "fontSize": "16px",
+        "color": "#66fcf1"
+      },
+      "insuranceStatus": {
+        "x": 580,
+        "y": 55,
+        "fontSize": "14px"
+      },
+      "timer": {
+        "x": 400,
+        "y": 30,
+        "fontSize": "24px"
+      }
+    },
+    "insurance_select": {
+      "title": {
+        "text": "LỰA CHỌN PHƯƠNG ÁN BẢO VỆ TÀI CHÍNH",
+        "x": 400,
+        "y": 50,
+        "fontSize": "26px",
+        "color": "#66fcf1"
+      },
+      "cards": {
+        "width": 200,
+        "height": 350,
+        "startY": 280,
+        "spacingX": 220,
+        "startX": 180,
+        "borderWidth": 2,
+        "items": [
+          {
+            "id": "none",
+            "name": "Không tham gia",
+            "cost": 0,
+            "color": "#555555"
+          },
+          {
+            "id": "basic",
+            "name": "Bảo hiểm Học đường",
+            "cost": 30,
+            "color": "#3498db"
+          },
+          {
+            "id": "mobility",
+            "name": "BH An toàn Di chuyển",
+            "cost": 70,
+            "color": "#66fcf1"
+          }
+        ]
+      },
+      "confirmButton": {
+        "x": 400,
+        "y": 520,
+        "width": 260,
+        "height": 50,
+        "label": "BẮT ĐẦU DI CHUYỂN"
+      }
+    },
+    "dialog": {
+      "box": {
+        "x": 40,
+        "y": 430,
+        "width": 720,
+        "height": 140,
+        "borderRadius": 8,
+        "borderWidth": 2,
+        "borderColor": "#66fcf1",
+        "bgAlpha": 0.85
+      },
+      "speakerTag": {
+        "x": 60,
+        "y": 420,
+        "fontSize": "18px",
+        "color": "#66fcf1"
+      },
+      "text": {
+        "x": 70,
+        "y": 455,
+        "fontSize": "16px",
+        "lineSpacing": 6,
+        "typewriterSpeedMs": 25
+      },
+      "choices": {
+        "width": 500,
+        "height": 45,
+        "startY": 230,
+        "spacingY": 57,
+        "fontSize": "16px"
+      }
+    },
+    "results": {
+      "title": {
+        "x": 400,
+        "y": 45,
+        "fontSize": "28px"
+      },
+      "invoice": {
+        "x": 150,
+        "y": 110,
+        "width": 500,
+        "height": 360,
+        "bgColor": "#1f2833",
+        "bgAlpha": 0.9,
+        "fontSize": "16px"
+      },
+      "coverageBar": {
+        "x": 250,
+        "y": 380,
+        "width": 300,
+        "height": 24
+      },
+      "buttons": {
+        "leftButton": {
+          "x": 260,
+          "y": 520,
+          "width": 200,
+          "height": 50,
+          "label": "QUAY LẠI MENU"
+        },
+        "rightButton": {
+          "x": 540,
+          "y": 520,
+          "width": 200,
+          "height": 50,
+          "label": "ĐI TIẾP NGÀY MAI"
+        }
+      }
+    },
+    "mobile_controls": {
+      "leftZone": {
+        "x": 95,
+        "y": 490,
+        "radius": 70,
+        "alpha": 0.4,
+        "color": "#a9a9a9"
+      },
+      "rightZone": {
+        "x": 705,
+        "y": 490,
+        "radius": 70,
+        "alpha": 0.4,
+        "color": "#a9a9a9"
+      }
+    }
+  }
+}

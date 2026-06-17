@@ -1,0 +1,56 @@
+{
+  "packages": [
+    {
+      "id": "none",
+      "name": "Không tham gia",
+      "cost": 0,
+      "coverage": {
+        "medical": 0.0,
+        "repair": 0.0
+      },
+      "description": "Không tốn chi phí mua ban đầu. Tự trả 100% khi gặp nạn.",
+      "pros": "Không tốn xu mua ban đầu.",
+      "cons": "Tự chịu mọi thiệt hại y tế và sửa xe.",
+      "icon": "❌"
+    },
+    {
+      "id": "red_helmet",
+      "name": "Gói Mũ Đỏ",
+      "cost": 10,
+      "coverage": {
+        "medical": 1.0,
+        "repair": 0.0
+      },
+      "description": "Tập trung bảo vệ y tế khi xảy ra va chạm.",
+      "pros": "Hỗ trợ 100% chi phí y tế.",
+      "cons": "Không bồi thường chi phí sửa xe.",
+      "icon": "⛑️"
+    },
+    {
+      "id": "old_bike",
+      "name": "Gói Xe Cũ",
+      "cost": 20,
+      "coverage": {
+        "medical": 0.0,
+        "repair": 1.0
+      },
+      "description": "Tập trung bồi thường sửa chữa phương tiện cũ.",
+      "pros": "Hỗ trợ 100% chi phí sửa xe.",
+      "cons": "Không bồi thường chi phí điều trị y tế.",
+      "icon": "🚲"
+    },
+    {
+      "id": "school_route",
+      "name": "Gói Đường Đến Trường",
+      "cost": 30,
+      "coverage": {
+        "medical": 0.8,
+        "repair": 0.8
+      },
+      "description": "Gói bảo vệ toàn diện cao cấp cho học sinh.",
+      "pros": "Hỗ trợ 80% y tế và 80% sửa xe.",
+      "cons": "Phí tham gia cao nhất (30 xu).",
+      "icon": "🎒"
+    }
+  ]
+}

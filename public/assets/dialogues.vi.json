@@ -1,0 +1,91 @@
+{
+  "dayDialogues": {
+    "1": [
+      { "speaker": "An", "text": "Oáp... Mới 6:50 sáng thôi sao? Hôm nay có buổi thuyết trình dự án tốt nghiệp cực kỳ quan trọng ở UEH, trễ một phút là rớt môn và phải đóng tiền triệu học lại!" },
+      { "speaker": "Mẹ", "text": "An ơi, mau dậy chuẩn bị đi thi đi con! Hôm nay thuyết trình nhóm cuối kỳ không được đi trễ đâu, nhớ đi đứng cẩn thận nhé con." },
+      { "speaker": "An", "text": "Dạ mẹ, con dắt xe đi ngay! Đang vội quá, khỏi cần kiểm tra phanh lốp hay đội mũ gì hết, con chạy lẹ cho kịp giờ!" },
+      { "speaker": "Hệ thống", "text": "Vòng lặp 1: Bạn vội vã lấy xe máy chạy đi mà không đội mũ bảo hiểm hay kiểm tra phanh xe. Tai nạn bất ngờ xảy ra..." }
+    ],
+    "2": [
+      { "speaker": "Hệ thống", "text": "Bạn giật mình tỉnh dậy, trán đẫm mồ hôi. Mở mắt ra, bạn lại thấy mình đang nằm trên chiếc giường quen thuộc. Đồng hồ vẫn chỉ đúng 6:50 sáng. Vụ tai nạn và cảm giác cạn kiệt ví tiền vừa rồi chân thực đến đáng sợ..." },
+      { "speaker": "An", "text": "Ủa? Sao mình lại ở đây? Rõ ràng mình vừa mới gặp tai nạn, mất sạch tiền viện phí và sửa xe, còn bị lỡ thi nữa? Sao thời gian lại quay về đúng 6:50 thế này?" },
+      { "speaker": "Mẹ", "text": "An ơi... 6 giờ 50 rồi đó... Nhớ cẩn thận nhé con. Mẹ đã để sẵn gói bảo hiểm Đường Đến Trường trên bàn học rồi. Hãy đội mũ bảo hiểm đỏ và đăng ký bảo hiểm để làm lá chắn bảo vệ tài chính cho bản thân nhé." },
+      { "speaker": "An", "text": "Lời mẹ dặn ấm áp và vô cùng thực tế... Ở góc bàn học học sinh, cuốn sổ tay hướng dẫn bảo hiểm học đường như đang sẵn sàng đồng hành cùng mình..." },
+      { "speaker": "Sổ tay an toàn", "text": "Bản đăng ký bảo hiểm hành trình: Gói Mũ Đỏ (10 xu), Gói Xe Cũ (20 xu), Gói Đường Đến Trường (30 xu). Bảo hiểm chính là lá chắn tài chính đắc lực, giúp bạn giảm thiểu tối đa thiệt hại tự chi trả khi gặp rủi ro tai nạn!" }
+    ],
+    "3": [
+      { "speaker": "An", "text": "Tích tắc... Tích tắc... Tiếng chuông đồng hồ reo nhẹ nhàng. Đúng 6:50 sáng lần thứ ba." },
+      { "speaker": "An", "text": "Mình đã hiểu ra bài học rồi. Tai nạn có thể ập đến bất cứ lúc nào. Mình phải chuẩn bị mọi thứ thật chu đáo và an toàn nhất để đến UEH kịp buổi thi thuyết trình." },
+      { "speaker": "Mẹ", "text": "Hôm nay con đã sẵn sàng chưa? Hãy đội chiếc mũ bảo hiểm đỏ, kiểm tra phanh xe thật kỹ, và mang theo lá chắn tài chính từ bảo hiểm nhé." },
+      { "speaker": "An", "text": "Dạ con đã sẵn sàng! Có mũ đỏ bảo vệ, xe Cub đã kiểm tra kỹ và gói bảo hiểm Đường Đến Trường làm điểm tựa tài chính, con tin mình sẽ đến trường thi an toàn." }
+    ]
+  },
+  "collisions": {
+    "pothole": {
+      "title": "Ổ Gà Trên Hẻm Nhỏ",
+      "description": "Nắng sớm chiếu rọi hẻm nhỏ quen thuộc, nhưng một ổ gà sâu hoắm ngập bùn đất bất ngờ xuất hiện chắn ngang lối đi.",
+      "choices": {
+        "safe": "Từ tốn giảm tốc, rà phanh đi vòng qua ổ gà cẩn thận.",
+        "danger": "Rồ ga lướt nhanh qua ổ gà để không trễ buổi thi thuyết trình."
+      }
+    },
+    "vendor": {
+      "title": "Gánh Hàng Rong Chợ Sáng",
+      "description": "Chợ sáng họp nhộn nhịp đông đúc, bỗng một gánh hàng hoa quả bất ngờ lùi nhanh ra giữa lối đi hẹp.",
+      "choices": {
+        "safe": "Bóp còi nhẹ nhàng và phanh dừng lại nhường đường.",
+        "danger": "Tăng tốc luồn lách qua khe hẹp để kịp giờ thi."
+      }
+    },
+    "vehicle": {
+      "title": "Xe Lấn Làn Ở Ngã Tư",
+      "description": "Tại ngã tư đông đúc, đèn giao thông vừa chuyển vàng thì một chiếc xe tải lớn lấn làn phóng vụt qua làm dòng xe cộ hỗn loạn.",
+      "choices": {
+        "safe": "Né sát vào lề bên phải và kiên nhẫn dừng lại chờ.",
+        "danger": "Cố tình tăng tốc để vượt qua trước đầu xe tải nhằm tiết kiệm thời gian."
+      }
+    },
+    "puddle": {
+      "title": "Vũng Nước Trơn Trượt",
+      "description": "Một vũng nước mưa lớn đọng lại bên lề đường nhựa sau cơn mưa đêm, cực kỳ trơn trượt.",
+      "choices": {
+        "safe": "Rà phanh đi vòng qua vũng nước để giữ an toàn và sạch sẽ.",
+        "danger": "Phóng thẳng qua vũng nước để tiết kiệm thời gian đi thi."
+      }
+    },
+    "pedestrian": {
+      "title": "Cụ Già Qua Đường",
+      "description": "Một cụ già đang chậm rãi đi bộ qua vạch đường dành cho người đi bộ dưới ánh nắng sớm.",
+      "choices": {
+        "safe": "Chủ động giảm tốc độ, dừng hẳn lại nhường đường hoàn toàn.",
+        "danger": "Bóp còi báo hiệu và cố gắng lách nhanh qua cụ."
+      }
+    }
+  },
+  "claim_math_explanations": {
+    "hem_nho": {
+      "none": "Không có bảo hiểm hỗ trợ, bạn phải tự chi trả toàn bộ 80 xu tổn thất (y tế: 50 xu, sửa xe: 30 xu). Bạn lỡ buổi thi thuyết trình và phải bắt đầu lại từ 6:50 sáng.",
+      "red_helmet": "Đã trang bị Gói Mũ Đỏ (hỗ trợ y tế 100%), bảo hiểm chi trả 50 xu viện phí. Bạn chỉ tự chi trả 30 xu chi phí sửa xe và 0 xu y tế.",
+      "old_bike": "Đã trang bị Gói Xe Cũ (hỗ trợ sửa xe 100%), bảo hiểm chi trả 30 xu sửa xe. Bạn chỉ tự chi trả 50 xu viện phí và 0 xu sửa xe.",
+      "school_route": "Đã trang bị Gói Đường Đến Trường (hỗ trợ y tế 80% và sửa xe 80%), bảo hiểm chi trả 40 xu y tế và 24 xu sửa xe. Bạn chỉ tự chi trả 16 xu tổn thất (y tế: 10 xu, sửa xe: 6 xu)."
+    },
+    "cho_sang": {
+      "none": "Không có bảo hiểm hỗ trợ, bạn phải tự chi trả toàn bộ 80 xu tổn thất (y tế: 20 xu, sửa xe: 60 xu). Bạn lỡ buổi thi thuyết trình và phải bắt đầu lại từ 6:50 sáng.",
+      "red_helmet": "Đã trang bị Gói Mũ Đỏ (hỗ trợ y tế 100%), bảo hiểm chi trả 20 xu viện phí. Bạn chỉ tự chi trả 60 xu sửa xe và 0 xu y tế.",
+      "old_bike": "Đã trang bị Gói Xe Cũ (hỗ trợ sửa xe 100%), bảo hiểm chi trả 60 xu sửa xe. Bạn chỉ tự chi trả 20 xu viện phí và 0 xu sửa xe.",
+      "school_route": "Đã trang bị Gói Đường Đến Trường (hỗ trợ y tế 80% và sửa xe 80%), bảo hiểm chi trả 16 xu y tế và 48 xu sửa xe. Bạn chỉ tự chi trả 16 xu tổn thất (y tế: 4 xu, sửa xe: 12 xu)."
+    },
+    "nga_tu": {
+      "none": "Không có bảo hiểm hỗ trợ, bạn phải tự chi trả toàn bộ 220 xu tổn thất (y tế: 100 xu, sửa xe: 120 xu). Bạn lỡ buổi thi thuyết trình và phải bắt đầu lại từ 6:50 sáng.",
+      "red_helmet": "Đã trang bị Gói Mũ Đỏ (hỗ trợ y tế 100%), bảo hiểm chi trả 100 xu viện phí. Bạn chỉ tự chi trả 120 xu sửa xe và 0 xu y tế.",
+      "old_bike": "Đã trang bị Gói Xe Cũ (hỗ trợ sửa xe 100%), bảo hiểm chi trả 120 xu sửa xe. Bạn chỉ tự chi trả 100 xu viện phí và 0 xu sửa xe.",
+      "school_route": "Đã trang bị Gói Đường Đến Trường (hỗ trợ y tế 80% và sửa xe 80%), bảo hiểm chi trả 80 xu y tế và 96 xu sửa xe. Bạn chỉ tự chi trả 44 xu tổn thất (y tế: 20 xu, sửa xe: 24 xu)."
+    },
+    "cong_truong": {
+      "none": "Không có bảo hiểm hỗ trợ, bạn phải tự chi trả toàn bộ 90 xu tổn thất (y tế: 40 xu, sửa xe: 50 xu). Bạn lỡ buổi thi thuyết trình và phải bắt đầu lại từ 6:50 sáng.",
+      "red_helmet": "Đã trang bị Gói Mũ Đỏ (hỗ trợ y tế 100%), bảo hiểm chi trả 40 xu viện phí. Bạn chỉ tự chi trả 50 xu chi phí sửa xe và 0 xu y tế.",
+      "old_bike": "Đã trang bị Gói Xe Cũ (hỗ trợ sửa xe 100%), bảo hiểm chi trả 50 xu sửa xe. Bạn chỉ tự chi trả 40 xu viện phí và 0 xu sửa xe.",
+      "school_route": "Đã trang bị Gói Đường Đến Trường (hỗ trợ y tế 80% và sửa xe 80%), bảo hiểm chi trả 32 xu y tế và 40 xu sửa xe. Bạn chỉ tự chi trả 18 xu tổn thất (y tế: 8 xu, sửa xe: 10 xu)."
+    }
+  }
+}
